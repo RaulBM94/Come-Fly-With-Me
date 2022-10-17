@@ -21,7 +21,9 @@ var gameBoard = document.getElementById('gameboard')
 var timerId = 0
 let int = 0;
 let [milliseconds, seconds, minutes] = [0, 0, 0];
+var dodge=0
 let timerRef = document.querySelector('.timerDisplay');
+var score=document.getElementById('score');
 
 
 //Comienzo del juego
@@ -43,9 +45,11 @@ function move() {
         clearInterval(int);
         [milliseconds, seconds, minutes] = [0, 0, 0];
         timerRef.innerHTML = '00 : 00 : 000 ';
+        dodge=0
     } else {
         if (bird.direction === 'up' && bird.y >= 0) { moveUp() }
         if (bird.direction === 'down' && bird.y <= 370) { moveDown() }
+        scoreCounter()
     }
 }
 
@@ -110,5 +114,11 @@ function displayTimer() {
     timerRef.innerHTML = `${m} : ${s}`;
 }
 
+function scoreCounter(){
+    if(enemy.x===5){
+        dodge++
+    }
+    score.innerHTML=dodge
+}
 
 
