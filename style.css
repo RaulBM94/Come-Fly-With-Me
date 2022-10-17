@@ -18,7 +18,7 @@ h2 {
     width: 600px;
     height: 400px;
     background-color: black;
-    position: absolute;
+    position: relative;
     margin-left: 30%;
     margin-right: 30%;
     padding-bottom: 5px;
@@ -27,15 +27,17 @@ h2 {
 #bird {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     background:blue;
-    position: relative;
+    position: absolute;
+    display:inline-block;
 }
 
 #enemy {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     background: red;
     position: relative;
+    display:inline-block;
 }
