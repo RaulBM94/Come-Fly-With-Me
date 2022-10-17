@@ -4,9 +4,17 @@ const bird = {
     direction: null,
     sprite: document.querySelector('#bird')
 }
-
 bird.sprite.style.top = bird.y + 'px'
 bird.sprite.style.left = bird.x + 'px'
+
+const enemy = {
+    x: 570,
+    y: 185,
+    direction: null,
+    sprite: document.querySelector('#enemy')
+}
+enemy.sprite.style.top = enemy.y + 'px'
+enemy.sprite.style.left = enemy.x + 'px'
 
 
 const timerId = setInterval(function () {
