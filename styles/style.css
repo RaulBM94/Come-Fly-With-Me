@@ -1,10 +1,10 @@
 @font-face {
     font-family: fuentenokia;
-src:url(../assets/nokiafc22.ttf);
+    src: url(../assets/nokiafc22.ttf);
 }
 
 
-body{
+body {
     background: url(https://wallpaperaccess.com/full/3089023.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -16,7 +16,7 @@ h1 {
     text-align: center;
     padding-bottom: 3px;
     font-size: 35px;
-    color:black;
+    color: black;
 }
 
 h2 {
@@ -30,11 +30,13 @@ h2 {
 #gameboard {
     width: 600px;
     height: 400px;
-    background-image: url(https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/af3df23ef99fe6845b15cad6591aecdb-1662054224/ohkay6/make-a-pixel-art-profile-picture-or-desktop-background.gif);
+    background-image: url(https://i.pinimg.com/originals/a5/9b/73/a59b735200362f91e6735b2abcb787b2.png);
+    /*url(https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/af3df23ef99fe6845b15cad6591aecdb-1662054224/ohkay6/make-a-pixel-art-profile-picture-or-desktop-background.gif); */
+    background-size: cover;
     position: relative;
     margin: auto;
     padding-bottom: 5px;
-    
+
 }
 
 #bird {
@@ -44,7 +46,7 @@ h2 {
     background-image: url(../assets/bird.gif);
     background-size: cover;
     position: absolute;
-    display:inline-block;
+    display: inline-block;
 }
 
 .enemy {
@@ -54,5 +56,5 @@ h2 {
     background-image: url(../assets/enemy.gif);
     background-size: cover;
     position: relative;
-    display:inline-block;
+    display: inline-block;
 }
