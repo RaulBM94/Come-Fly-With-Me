@@ -19,22 +19,23 @@ function enemyStyle() {
 
 
 var gameBoard = document.getElementById('gameboard')
-var timerId = 0
+var start_timer = 0
 var timer2 = 0
-let int = 0;
+var inter=0
+var timer3=0
 let [milliseconds, seconds, minutes] = [0, 0, 0];
 var dodge = 0
 let timerRef = document.querySelector('.timerDisplay');
 var score = document.getElementById('score');
 var level = document.querySelector('#level');
 
-//Comienzo del juego
+//funciones
 
-function spawnEnemy() {
+function spawnEnemy() {//generación del enemigo
     var newEnemy = document.createElement('div');
     newEnemy.classList.add("enemy")
     var enemyObj = {
-        x: 570,
+        x: 535,
         y: Math.floor(Math.random() * 340),
         sprite: newEnemy
     }
@@ -43,33 +44,31 @@ function spawnEnemy() {
     gameBoard.appendChild(newEnemy)
 }
 
-function start() {
-    timerId = setInterval(function () {
+function start() {//inicio juego
+    start_timer = setInterval(function () {
         move()
         moveEnemy()
     }, 100)
-    int = setInterval(displayTimer, 10);
-    timer2 = setInterval(spawnEnemy(), 3000)
+    
 }
-
-start()
-
-
+timer2 = setInterval(spawnEnemy(), 3000)
+inter = setInterval(displayTimer(), 10);
+timer3= setInterval(start(),100)//llamada a la función de inicio
 
 function move() {
-    if (bird.direction === 'up' && bird.y >= 40) { moveUp() }
-    if (bird.direction === 'down' && bird.y <= 300) { moveDown() }
+    if (bird.direction === 'up' && bird.y >= 40) { moveUp() }//pajaro hacia arriba
+    if (bird.direction === 'down' && bird.y <= 300) { moveDown() }//pajaro hacia debajo
     scoreCounter()
     enemies.forEach(function (enemy) {
-        if (enemy.x < bird.x + 40 &&
-            enemy.y < bird.y + 30 &&
-            enemy.x + 45 > bird.x &&
-            enemy.y + 50 > bird.y) {
+        if (enemy.x < bird.x + 40 &&//detección de colisión
+            enemy.y < bird.y + 30 &&//
+            enemy.x + 45 > bird.x &&//
+            enemy.y + 50 > bird.y) {//
             alert(`Game Over`)
             clearInterval(timerId)
             clearInterval(timer2)
             restart()
-            clearInterval(int);
+            clearInterval(inter);
             [milliseconds, seconds, minutes] = [0, 0, 0];
             timerRef.innerHTML = '00 : 00 : 000 ';
             dodge = 0
@@ -114,7 +113,11 @@ function restart() {
         gameBoard.removeChild(elem)
     })
     enemies = []
-    start()
+    clearInterval(timer3)
+    clearInterval(inter)
+    timer_start
+    timer3
+    inter
 }
 
 document.addEventListener('keydown', function (e) {
@@ -131,7 +134,6 @@ document.addEventListener('keyup', function (e) {
         bird.direction = null
     }
 })
-
 
 function displayTimer() {
     milliseconds += 10;
