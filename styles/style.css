@@ -36,7 +36,7 @@ h2 {
     position: relative;
     margin: auto;
     padding-bottom: 5px;
-
+    overflow: hidden;
 }
 
 #bird {
@@ -49,12 +49,22 @@ h2 {
     display: inline-block;
 }
 
+#start {
+  position: absolute;
+  right: 20px;
+  top: 170px;
+  color: white;
+  background-color: black;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;;
+}
+
 .enemy {
     width: 67px;
     height: 70px;
-    /* border-radius: 50%; */
     background-image: url(../assets/enemy.gif);
     background-size: cover;
-    position: relative;
+    position: absolute;
     display: inline-block;
 }
