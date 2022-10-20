@@ -3,7 +3,6 @@
     src: url(../assets/nokiafc22.ttf);
 }
 
-
 body {
     background: url(https://wallpaperaccess.com/full/3089023.png);
     background-size: cover;
@@ -11,17 +10,16 @@ body {
     font-family: fuentenokia;
 }
 
-
 h1 {
-    margin-left: 37%;
+    margin-left: 35%;
     /* text-align: center; */
     padding-bottom: 3px;
-    font-size: 25px;
+    font-size: 40px;
     color: black;
 }
 
 h2 {
-    margin-left: 36.5%;
+    margin-left: 40%;
     padding-bottom: 3px;
     font-family: fuentenokia;
     font-size: 15px;
@@ -31,9 +29,8 @@ h2 {
 #gameboard {
     width: 600px;
     height: 400px;
-    background-image:
-        /* url(https://i.pinimg.com/originals/a5/9b/73/a59b735200362f91e6735b2abcb787b2.png); */
-        url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/71c8d4c1-f1a9-47f1-855c-030b165278fa/dektl6b-3b40000d-d04a-4d92-b767-17b70b19fb22.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzcxYzhkNGMxLWYxYTktNDdmMS04NTVjLTAzMGIxNjUyNzhmYVwvZGVrdGw2Yi0zYjQwMDAwZC1kMDRhLTRkOTItYjc2Ny0xN2I3MGIxOWZiMjIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.sk9f7WGbHKRhgtFKSY4dVx73H2s9WkXdPzWAdEXgGzI);
+    background-image: url(../assets/fondo_animado.gif);
+    /* background-image: url(../assets/fondo_estático.png); */
     background-size: cover;
     position: relative;
     margin: auto;
@@ -51,36 +48,6 @@ h2 {
     display: inline-block;
 }
 
-#start {
-    width: 200px;
-    height: 50px;
-    color: white;
-    background-color: rgb(32, 83, 58);
-    position: absolute;
-    border: 5px solid #000000;
-    border-radius: 5px 5px 5px 5px;
-    right: 20px;
-    top: 170px;
-    font-size: 20px;
-    font-family: fuentenokia;
-    cursor: pointer;
-}
-
-#start:hover {
-    width: 200px;
-    height: 50px;
-    color: rgb(206, 209, 208);
-    background-color: rgb(10, 48, 30);
-    position: absolute;
-    border: 5px solid #000000;
-    border-radius: 5px 5px 5px 5px;
-    right: 20px;
-    top: 170px;
-    font-size: 20px;
-    font-family: fuentenokia;
-    cursor: pointer;
-}
-
 .enemy {
     width: 77px;
     height: 80px;
@@ -90,21 +57,41 @@ h2 {
     display: inline-block;
 }
 
-#restart{
+#start {
+    width: 200px;
+    height: 50px;
+    color: white;
+    background-color: rgb(32, 83, 58);
+    position: absolute;
+    border: 5px solid #000000;
+    border-radius: 5px 5px 5px 5px;
+    right: 20px;
+    top: 195px;
+    font-size: 20px;
+    font-family: fuentenokia;
+}
+
+#start:hover {
+    color: rgb(206, 209, 208);
+    background-color: rgb(10, 48, 30);
+    cursor: pointer;
+}
+
+/* loser */
+#restart {
     width: 400px;
-    height: 300px;
+    height: 200px;
     position: absolute;
     color: rgb(255, 255, 255);
-    margin-top: 50px;
+    margin-top: 100px;
     margin-left: 100px;
+    padding-top: 30px;
     font-family: fuentenokia;
-    font-size: 50px;
+    font-size: 40px;
+    text-align: center;
     background-color: rgb(52, 131, 93);
     border: 10px solid #000000;
     border-radius: 10px 10px 10px 10px;
-    display:none;
-    
-
 }
 
 #restartButton {
@@ -114,11 +101,97 @@ h2 {
     position: absolute;
     border: 5px solid #000000;
     border-radius: 5px 5px 5px 5px;
-    color:rgb(255, 255, 255);
-    right: 200px;
-    top: 280px;
+    color: rgb(255, 255, 255);
+    right: 100px;
+    top: 100px;
+    font-size: 20px;
+    font-family: fuentenokia;
+
+}
+
+#restartButton:hover {
+    background-color: rgb(10, 48, 30);
+    color: rgb(206, 209, 208);
+    cursor: pointer;
+}
+
+#quit_loser {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(32, 83, 58);
+    position: absolute;
+    border: 5px solid #000000;
+    border-radius: 5px 5px 5px 5px;
+    color: rgb(255, 255, 255);
+    right: 100px;
+    top: 160px;
     font-size: 20px;
     font-family: fuentenokia;
     cursor: pointer;
-    display:none;
+}
+
+#quit_loser:hover {
+    background-color: rgb(10, 48, 30);
+    color: rgb(206, 209, 208);
+    cursor: pointer;
+}
+
+/* Winner */
+#winner {
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    margin-top: 100px;
+    margin-left: 100px;
+    padding-top: 30px;
+    font-family: fuentenokia;
+    font-size: 40px;
+    text-align: center;
+    background-color: rgb(86, 138, 113);
+    border: 10px solid #000000;
+    border-radius: 10px 10px 10px 10px;
+
+}
+
+#replayButton {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(32, 83, 58);
+    position: absolute;
+    border: 5px solid #000000;
+    border-radius: 5px 5px 5px 5px;
+    color: rgb(255, 255, 255);
+    right: 100px;
+    top: 100px;
+    font-size: 20px;
+    font-family: fuentenokia;
+    cursor: pointer;
+}
+
+#replayButton:hover {
+    background-color: rgb(10, 48, 30);
+    color: rgb(206, 209, 208);
+    cursor: pointer;
+}
+
+#quit_win {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(32, 83, 58);
+    position: absolute;
+    border: 5px solid #000000;
+    border-radius: 5px 5px 5px 5px;
+    color: rgb(255, 255, 255);
+    right: 100px;
+    top: 160px;
+    font-size: 20px;
+    font-family: fuentenokia;
+    cursor: pointer;
+}
+
+#quit_win:hover {
+    background-color: rgb(10, 48, 30);
+    color: rgb(206, 209, 208);
+    cursor: pointer;
 }
