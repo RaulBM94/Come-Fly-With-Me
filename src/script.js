@@ -289,11 +289,12 @@ replayButton.addEventListener('click', function () {
   winner.style.display = 'none';
   gameBoard.style.backgroundImage = "url('../assets/fondo_animado.gif')"
   bird = new Bird()
-  enemies.removeAll()
+  // enemies.removeAll()
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  // start()
+  enemies.MAX_ENEMIES=1
+  start()
 })
 
 var quit_loser=document.querySelectorAll('.quit_loser')
