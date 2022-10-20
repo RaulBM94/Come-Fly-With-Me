@@ -61,7 +61,7 @@ function Enemy() {
 
   this.move = function () {
     if (this.x >= -57) {
-      this.x -= 2
+      this.x --
       this.sprite.style.left = this.x + 'px'
     } else {
       gameBoard.removeChild(this.sprite)
@@ -124,7 +124,7 @@ function Enemies(max) {
 }
 
 
-const enemies = new Enemies(4)
+const enemies = new Enemies(5)
 
 var resetButton = document.getElementById('restartButton')
 var reset = document.getElementById('restart')
@@ -177,7 +177,7 @@ var Winner = new Audio("../assets/music/Winner2.mp3")
 function win() {
   bg_music.pause();
   bg_music.currentTime = 0;
-  Winner.volume = 0.1;
+  Winner.volume = 0.2;
   Winner.loop = true;
   Winner.play();
 
@@ -196,9 +196,14 @@ function checkCollisions() {
   }
 }
 
+var LevelUp = new Audio("../assets/music/LevelUp.mp3")
+
 function checkWin() {
   if (game_timerId !== null && enemies.MAX_ENEMIES === 0 && enemies.blueBirds.length === 0) {
-    win()
+    LevelUp.volume = 0.2;
+    LevelUp.loop = false;
+    LevelUp.play();
+    setTimeout(win(),2000)
   }
 }
 
@@ -253,10 +258,10 @@ function start() {
     if (enemies.MAX_ENEMIES !== 0) {
       enemies.addEnemy()
     }
-  }, 2500)
+  }, 3000)
 
   // Arranca Cronómetro
-  timer_timerId = setInterval(displayTimer, 1000);
+  timer_timerId = setInterval(displayTimer, 800);
 }
 
 const startButton = document.getElementById('start')
@@ -275,7 +280,7 @@ resetButton.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES = 4
+  enemies.MAX_ENEMIES = 5
   start()
 })
 
@@ -289,7 +294,7 @@ replayButton.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES = 4
+  enemies.MAX_ENEMIES = 5
   start()
 })
 
@@ -304,11 +309,13 @@ quit_loser.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES = 4
+  enemies.MAX_ENEMIES = 5
 })
 
 var quit_win = document.querySelector('#quit_win')
 quit_win.addEventListener('click', function () {
+  Winner.pause();
+  Winner.currentTime = 0;
   startButton.style.display = '';
   winner.style.display = 'none';
   reset.style.display = 'none';
@@ -318,5 +325,5 @@ quit_win.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES = 4
+  enemies.MAX_ENEMIES = 5
 })
