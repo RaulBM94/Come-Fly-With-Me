@@ -124,7 +124,7 @@ function Enemies(max) {
 }
 
 
-const enemies = new Enemies(5)
+const enemies = new Enemies(2)
 
 var resetButton = document.getElementById('restartButton')
 var reset = document.getElementById('restart')
@@ -280,7 +280,7 @@ resetButton.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES = 5
+  enemies.MAX_ENEMIES = 2
   start()
 })
 
@@ -294,7 +294,7 @@ replayButton.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES = 5
+  enemies.MAX_ENEMIES = 2
   start()
 })
 
@@ -309,7 +309,7 @@ quit_loser.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES = 5
+  enemies.MAX_ENEMIES = 2
 })
 
 var quit_win = document.querySelector('#quit_win')
@@ -325,5 +325,5 @@ quit_win.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES = 5
+  enemies.MAX_ENEMIES = 2
 })
