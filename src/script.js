@@ -46,6 +46,45 @@ document.addEventListener('keyup', function (e) {
 })
 
 /*
+ * ENEMY
+ * -- Genera un enemigo
+ */
+function Enemy() {
+  this.x = 535;
+  this.y = Math.floor(Math.random() * 340);
+
+  var newEnemy = document.createElement('div');
+  newEnemy.classList.add("enemy")
+  newEnemy.style.top = this.y + 'px'
+
+  this.sprite = newEnemy
+
+  this.move = function () {
+    if (this.x >= -57) {
+      this.x -= 2
+      this.sprite.style.left = this.x + 'px'
+    } else {
+      gameBoard.removeChild(this.sprite)
+      enemies.blueBirds.shift()
+      score++
+      document.getElementById('score').innerHTML = score
+    }
+  }
+
+  // is Enemy collisioning with bird?
+  this.checkCollision = function () {
+    return (
+      this.x < bird.x + 40 &&
+      this.y < bird.y + 30 &&
+      this.x + 45 > bird.x &&
+      this.y + 50 > bird.y)
+  }
+
+  this.move()
+}
+
+
+/*
  * ENEMIES
  * -- Array de enemigos
  */
@@ -80,11 +119,12 @@ function Enemies(max) {
     this.blueBirds.forEach(function (enemy) {
       gameBoard.removeChild(enemy.sprite)
     })
-
     this.blueBirds = []
   }
 }
-const enemies = new Enemies(1)
+
+
+const enemies = new Enemies(4)
 
 var resetButton = document.getElementById('restartButton')
 var reset = document.getElementById('restart')
@@ -113,50 +153,6 @@ function displayButtonLoser() {
   reset.style.display = ''
 }
 
-/*
- * ENEMY
- * -- Genera un enemigo
- */
-function Enemy() {
-  this.x = 535;
-  this.y = Math.floor(Math.random() * 340);
-
-  var newEnemy = document.createElement('div');
-  newEnemy.classList.add("enemy")
-  newEnemy.style.top = this.y + 'px'
-
-  this.sprite = newEnemy
-
-  this.move = function () {
-    if (this.x >= -57) {
-      this.x -= 5
-      this.sprite.style.left = this.x + 'px'
-    } else {
-      gameBoard.removeChild(this.sprite)
-      enemies.blueBirds.shift()
-      score++
-      document.getElementById('score').innerHTML = score
-    }
-  }
-  // if (score === 1) {
-  //     let num = 1;
-  //     let up = num++
-  //     document.querySelector('#level').innerHTML = up;
-  //          if(document.querySelector('#level').innerHTML === 6){}
-  // }
-
-  // is Enemy collisioning with bird?
-  this.checkCollision = function () {
-    return (
-      this.x < bird.x + 40 &&
-      this.y < bird.y + 30 &&
-      this.x + 45 > bird.x &&
-      this.y + 50 > bird.y)
-  }
-
-  this.move()
-}
-
 var gameBoard = document.getElementById('gameboard')
 var level = document.querySelector('#level');
 
@@ -175,7 +171,7 @@ function gameOver() {
   clearInterval(enemies_timerId)
   clearInterval(timer_timerId)
 
-  setTimeout(displayButtonLoser, 5000)
+  setTimeout(displayButtonLoser, 3000)
 }
 var Winner = new Audio("../assets/music/Winner2.mp3")
 function win() {
@@ -236,7 +232,7 @@ function displayTimer() {
  * GAME
  * -- start: arranca el juego, pajaro, enemigo y cronómetro
  */
-let game_timerId=null
+let game_timerId = null
 let enemies_timerId
 let timer_timerId
 var bg_music = new Audio("../assets/music/bg_music.mp3")
@@ -257,7 +253,7 @@ function start() {
     if (enemies.MAX_ENEMIES !== 0) {
       enemies.addEnemy()
     }
-  }, 1500)
+  }, 2500)
 
   // Arranca Cronómetro
   timer_timerId = setInterval(displayTimer, 1000);
@@ -279,7 +275,7 @@ resetButton.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES=1
+  enemies.MAX_ENEMIES = 4
   start()
 })
 
@@ -293,19 +289,34 @@ replayButton.addEventListener('click', function () {
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
-  enemies.MAX_ENEMIES=1
+  enemies.MAX_ENEMIES = 4
   start()
 })
 
-var quit_loser=document.querySelectorAll('.quit_loser')
-quit_loser.addEventListener('click',function(){
+var quit_loser = document.querySelector('#quit_loser')
+quit_loser.addEventListener('click', function () {
   startButton.style.display = '';
   winner.style.display = 'none';
-  reset.style.display='none';
+  reset.style.display = 'none';
   gameBoard.style.backgroundImage = "url('../assets/fondo_animado.gif')"
   bird = new Bird()
   enemies.removeAll()
   resetTimer()
   score = 0
   document.getElementById('score').innerHTML = score
+  enemies.MAX_ENEMIES = 4
+})
+
+var quit_win = document.querySelector('#quit_win')
+quit_win.addEventListener('click', function () {
+  startButton.style.display = '';
+  winner.style.display = 'none';
+  reset.style.display = 'none';
+  gameBoard.style.backgroundImage = "url('../assets/fondo_animado.gif')"
+  bird = new Bird()
+  enemies.removeAll()
+  resetTimer()
+  score = 0
+  document.getElementById('score').innerHTML = score
+  enemies.MAX_ENEMIES = 4
 })
